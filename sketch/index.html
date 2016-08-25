@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Whiteboard</title>
+    <script src="jquery-latest.js"></script>
+    <script src='sketch.min.js'></script>
+    <script type='text/javascript'>
+      $(function() {
+        $.each(['#f00', '#ff0', '#0f0', '#0ff', '#00f', '#000', '#fff'], function() {
+          $('#tools').append("<a href='#colored_sketch' data-color='" + this + "' style='border: 1px solid black; width: 30px; height: 30px; background: " + this + "; display: inline-block;'></a> ");
+        });
+        $('#tools').append("<a onclick='location.reload()' style='vertical-align:top; border: 1px solid black; width: 60px; height: 30px; display: inline-block; text-align:center; padding-top:6px; box-sizing:border-box;'>Clear</a> ");
+
+        $('#colored_sketch').sketch();
+        function canvasresize() {
+          $("canvas").attr("width",$("canvas").width())
+          $("canvas").attr("height",$("canvas").height())
+        }
+        canvasresize();
+        // $(window).resize(function() {
+        //   canvasresize();
+        // });
+      });
+    </script>
+  </head>
+  <body>
+    <div id='tools' style="height:10vh"></div>
+    <canvas id='colored_sketch' style='width:100vw; height:90vh;' style='border: 2px solid black'></canvas>
+  </body>
+</html>
